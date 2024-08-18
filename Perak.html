@@ -151,12 +151,15 @@
         });
 
         document.addEventListener("click", (e) => {
-        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
-        navLinks.classList.remove("active");
-        hamburger.classList.remove("active");
-          }
-        });
-    
+          if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+              navLinks.classList.remove("active");
+              hamburger.classList.remove("active");
+              const dropdowns = document.querySelectorAll(".dropdown");
+              dropdowns.forEach(dropdown => {
+                dropdown.style.display = "none";
+              });
+            }
+          });
       </script>
     
 </body>
