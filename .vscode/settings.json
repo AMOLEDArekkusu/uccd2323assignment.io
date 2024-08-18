@@ -1,0 +1,5 @@
+{
+    "liveServer.settings.port": 5501,
+    "appService.defaultWebAppToDeploy": "/subscriptions/13c13b5a-f754-4fff-9a8f-7e1c46003fa9/resourceGroups/discovermalaysia2023_group/providers/Microsoft.Web/sites/discovermalaysia2023",
+    "appService.deploySubpath": "."
+}
