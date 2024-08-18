@@ -8,34 +8,34 @@
     <title> Perak- Discover Malaysia</title>
 </head>
 <body>
-    <nav>
-        <div class="navbar">
-          <a href="index.html" class="nav-branding"><i class="fas fa-home"></i> HOME</a>
-          <ul class="navbar-links">
-            <li><a href="about.html">ABOUT</a></li>
-            <li><a href="faq_n_helps.html">FAQ</a></li>
-            <li>
-              <a href="#" class="pages-link">PAGES <i class="fas fa-caret-down"></i></a>
-              <ul class="dropdown">
-                <li><a href="Kedah.html">Kedah</a></li>
-                <li><a href="pahang.html">Pahang</a></li>
-                <li><a href="Penang.html">Penang</a></li>
-                <li><a href="Perak.html">Perak</a></li>
-                <li><a href="negeri.sembilan.html">Negeri Sembilan</a></li>
-                <li><a href="Kuala Lumpur.html">Kuala Lumpur</a></li>
-                <li><a href="Sabah.html">Sabah</a></li>
-                <li><a href="Sarawak.html">Sarawak</a></li>
-              </ul>
-            </li>
-            <li><a href="contact_us.html">CONTACT US</a></li>
+  <nav>
+    <div class="navbar">
+      <a href="index.html" class="nav-branding"><i class="fas fa-home"></i> HOME</a>
+      <ul class="navbar-links">
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="faq_n_helps.html">FAQ</a></li>
+        <li class="dropdown-container">
+          <a href="#" class="pages-link">PAGES <i class="fas fa-caret-down"></i></a>
+          <ul class="dropdown">
+            <li><a href="Kedah.html">Kedah</a></li>
+            <li><a href="pahang.html">Pahang</a></li>
+            <li><a href="Penang.html">Penang</a></li>
+            <li><a href="Perak.html">Perak</a></li>
+            <li><a href="negeri.sembilan.html">Negeri Sembilan</a></li>
+            <li><a href="Kuala Lumpur.html">Kuala Lumpur</a></li>
+            <li><a href="Sabah.html">Sabah</a></li>
+            <li><a href="Sarawak.html">Sarawak</a></li>
           </ul>
-          <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </div>
-        </div>
-      </nav>
+        </li>
+        <li><a href="contact_us.html">CONTACT US</a></li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
 
     <div class ="header">
       <h1>Perak : Immerse Yourself in Perak’s Rich History</h1>
@@ -120,46 +120,42 @@
       </footer>
       
       <script>
-        const hamburger = document.querySelector(".hamburger");
-        const navLinks = document.querySelector(".navbar-links");
-        const dropdowns = document.querySelectorAll(".navbar-links > li > a");
-        const pagesLink = document.querySelector(".pages-link");
+        document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".navbar-links");
+  const dropdownContainer = document.querySelector(".dropdown-container");
+  const pagesLink = document.querySelector(".pages-link");
+  const dropdown = document.querySelector(".dropdown");
 
-        hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        navLinks.classList.toggle("active");
-        });
+  hamburger.addEventListener("click", function() {
+    hamburger.classList.toggle("active");
+    navLinks.classList.toggle("active");
+  });
 
-        dropdowns.forEach(dropdown => {
-        dropdown.addEventListener("click", (e) => {
-        if (window.innerWidth <= 768) {
-          const submenu = dropdown.nextElementSibling;
-        if (submenu && submenu.classList.contains("dropdown")) {
-        e.preventDefault();
-        submenu.style.display = submenu.style.display === "block" ? "none" : "block";
-              }
-            }
-          });
-        });
+  pagesLink.addEventListener("click", function(e) {
+    e.preventDefault();
+    if (window.innerWidth <= 768) {
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    }
+  });
 
-        pagesLink.addEventListener("click", (e) => {
-        if (window.innerWidth <= 768) {
-        e.preventDefault();
-        const dropdownMenu = pagesLink.nextElementSibling;
-        dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
-          }
-        });
+  document.addEventListener("click", function(e) {
+    const isClickInsideNav = navLinks.contains(e.target) || hamburger.contains(e.target);
+    if (!isClickInsideNav) {
+      navLinks.classList.remove("active");
+      hamburger.classList.remove("active");
+      if (window.innerWidth <= 768) {
+        dropdown.style.display = "none";
+      }
+    }
+  });
 
-        document.addEventListener("click", (e) => {
-          if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
-              navLinks.classList.remove("active");
-              hamburger.classList.remove("active");
-              const dropdowns = document.querySelectorAll(".dropdown");
-              dropdowns.forEach(dropdown => {
-                dropdown.style.display = "none";
-              });
-            }
-          });
+  window.addEventListener("resize", function() {
+    if (window.innerWidth > 768) {
+      dropdown.style.display = "";
+    }
+  });
+});
       </script>
     
 </body>

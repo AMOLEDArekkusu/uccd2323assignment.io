@@ -331,8 +331,8 @@ nav {
   }
 
   .dropdown {
-    position: static;
     display: none;
+    position: static;
     background-color: #1a1a1a;
     width: 100%;
   }
@@ -395,4 +395,11 @@ img {
 
 p {
   text-align: justify;
+}
+
+
+@media (min-width: 769px) {
+  .dropdown-container:hover .dropdown {
+    display: block;
+  }
 }
